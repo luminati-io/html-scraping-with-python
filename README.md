@@ -69,7 +69,7 @@ If Python is installed, you'll see the version number; otherwise, you'll get an 
 
 Next, create a folder named `WebScraper` and inside it create a file called `scraper.py`. Open this file in your preferred integrated development environment (IDE). We'll use [Visual Studio Code](https://code.visualstudio.com/) in this guide:
 
-![VSCode showing the project](https://media.brightdata.com/2024/04/an-image-showing-where-VSC-is-used-1.png)
+![VSCode showing the project](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/an-image-showing-where-VSC-is-used-1.png)
 
 An IDE is a comprehensive tool that enables developers to write code, debug, test programs, create automations, and more. You'll use it to develop your HTML scraper.
 
@@ -95,7 +95,7 @@ python<version> -m venv <virtual-environment-name>
 
 This creates a directory for all packages and scripts within your project folder:
 
-![Virtual environment folder creation](https://media.brightdata.com/2024/04/Command-to-create-a-folder-for-all-the-packages-and-scripts-1.png)
+![Virtual environment folder creation](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Command-to-create-a-folder-for-all-the-packages-and-scripts-1.png)
 
 Now activate your virtual environment using the appropriate command for your system:
 
@@ -110,7 +110,7 @@ source <virtual-environment-name>/bin/activate #In MacOS and Linux
 
 When activated successfully, your virtual environment name will appear on the left side of your terminal:
 
-![Virtual environment activation indicator](https://media.brightdata.com/2024/04/The-name-of-your-virtual-environment-1.png)
+![Virtual environment activation indicator](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/The-name-of-your-virtual-environment-1.png)
 
 With your virtual environment active, install a web scraping library. Options include [Playwright](https://playwright.dev/), [Selenium](https://www.selenium.dev/), [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/), and [Scrapy](https://scrapy.org/). For this tutorial, we'll use [Playwright](https://playwright.dev/python/docs/intro) because it's user-friendly, supports multiple browsers, handles dynamic content, and offers headless mode (scraping without a GUI).
 
@@ -202,17 +202,17 @@ main()
 
 In Visual Studio Code, the extracted HTML appears like this:
 
-![Extracted HTML in VSCode](https://media.brightdata.com/2024/04/The-extracted-HTML-in-VSC-1.png)
+![Extracted HTML in VSCode](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/The-extracted-HTML-in-VSC-1.png)
 
 ## Targeting Specific HTML Elements
 
 While extracting an entire webpage is possible, web scraping becomes truly valuable when you focus on specific information. In this section, we'll extract only the laptop titles from the website's first page:
 
-![Laptop titles to extract](https://media.brightdata.com/2024/04/Showing-the-titles-we-are-going-to-extract-from-the-target-website-1.png)
+![Laptop titles to extract](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Showing-the-titles-we-are-going-to-extract-from-the-target-website-1.png)
 
 To extract specific elements, understand the website's structure first. Right-click and select **Inspect** on the page:
 
-![Using inspect on the target website](https://media.brightdata.com/2024/04/Click-on-inspect-on-the-target-website-1.png)
+![Using inspect on the target website](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Click-on-inspect-on-the-target-website-1.png)
 
 Alternatively, use these keyboard shortcuts:
 - macOS: **Cmd + Option + I**
@@ -220,15 +220,15 @@ Alternatively, use these keyboard shortcuts:
 
 Here's the structure of our target page:
 
-![HTML structure of target website](https://media.brightdata.com/2024/04/The-HTML-structure-of-the-target-website-1.png)
+![HTML structure of target website](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/The-HTML-structure-of-the-target-website-1.png)
 
 You can examine specific page elements using the selection tool in the top-left corner of the **Inspect** window:
 
-![Inspecting specific elements](https://media.brightdata.com/2024/04/How-to-inspect-specific-items-in-the-source-code-1.png)
+![Inspecting specific elements](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/How-to-inspect-specific-items-in-the-source-code-1.png)
 
 Select one of the laptop titles in the **Inspect** window:
 
-![Inspecting a laptop title](https://media.brightdata.com/2024/04/Inspecting-one-of-the-titles-we-want-to-scrape-1.png)
+![Inspecting a laptop title](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Inspecting-one-of-the-titles-we-want-to-scrape-1.png)
 
 You can see that each title is contained in an `<a> </a>` tag, wrapped by an `h4` tag, with the link having a `title` class. So we need to look for `<a href>` tags inside `<h4>` tags with a `title` class.
 
@@ -275,7 +275,7 @@ print(titles)
 
 The output shows an array of elements:
 
-![Array of heading elements](https://media.brightdata.com/2024/04/Array-of-elements-after-printing-the-titles-1.png)
+![Array of heading elements](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Array-of-elements-after-printing-the-titles-1.png)
 
 This output doesn't show the titles directly, but references elements matching our criteria. We need to loop through these elements to find `<a>` tags with a `title` class and extract their text.
 
@@ -288,7 +288,7 @@ for title in titles:
 
 Running this code produces output like:
 
-![Output of title extraction](https://media.brightdata.com/2024/04/An-image-of-how-the-output-should-look-like-1.png)
+![Output of title extraction](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/An-image-of-how-the-output-should-look-like-1.png)
 
 To filter out empty arrays, add:
 
@@ -332,7 +332,7 @@ Since we already know how to extract titles, we just need to learn how to naviga
 
 The website has pagination buttons at the bottom. We need to locate and click on the "2" button programmatically. Inspecting the page reveals that this element is a list item (`<li>` tag) with the text "2":
 
-![Pagination element with text "2"](https://media.brightdata.com/2024/04/The-required-element-has-an-inner-text-of-2-1.png)
+![Pagination element with text "2"](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/The-required-element-has-an-inner-text-of-2-1.png)
 
 We can use the `get_by_role()` selector to find a list item and the `get_by_text()` selector to find text containing "2":
 
@@ -531,10 +531,10 @@ main()
 
 After running this code, your CSV file should look like:
 
-![CSV file output example](https://media.brightdata.com/2024/04/Example-of-how-the-CSV-file-should-look-like-1.png)
+![CSV file output example](https://github.com/luminati-io/html-scraping-with-python/blob/main/images/Example-of-how-the-CSV-file-should-look-like-1.png)
 
 ## Final Thoughts
 
-While this guide demonstrates basic web scraping, real-world scenarios often present challenges such as CAPTCHAs, rate limits, site layout changes, and regulatory requirements. Bright Data offers [solutions](https://brightdata.com/products) for these challenges, including advanced residential proxies to improve scraping performance, a Web Scraper IDE for building scalable scrapers, and a Web Unblocker to access blocked sites.
+While this guide demonstrates basic web scraping, [real-world scenarios](https://brightdata.com/use-cases) often present challenges such as CAPTCHAs, rate limits, site layout changes, and regulatory requirements. Bright Data offers [solutions](https://brightdata.com/products) for these challenges, including [advanced residential proxies](https://brightdata.com/proxy-types/residential-proxies) to improve scraping performance, a Web Scraper IDE for building scalable scrapers, and a [Web Unblocker](https://brightdata.com/products/web-unlocker) to access blocked sites.
 
 Start your free trial today!
